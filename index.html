@@ -1,1 +1,1763 @@
-Under Construction!
+<!DOCTYPE hvtml>
+<html lang="en-US">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>LESpeech: Break Language Barriers for Cross-language Speaker-Adaptive Text-to-Speech</title>
+    <meta name="generator" content="Jekyll v3.9.0">
+    <meta property="og:title" content="TODO: title">
+    <meta property="og:locale" content="en_US">
+    <!-- End Jekyll SEO tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#212bbf">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+    <section class="main-content">
+      <h1 id="">
+        <center>LESpeech: Break Language Barriers for Cross-language Speaker-Adaptive Text-to-Speech</center>
+      </h1>
+      <center> Anonymous Authors </center>
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+
+        <li><a href="#tts">Audio Samples (Compared with XTTS v2)</a></li>
+        <ul>
+          <li><a href="#2.1">English (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#2.2">English (Content Language) - Italian (Reference Voice Language) </a></li>
+          <li><a href="#2.3">English (Content Language) - Danish (Reference Voice Language) </a></li>
+          <li><a href="#2.4">Italian (Content Language) - Italian (Reference Voice Language) </a></li>
+          <li><a href="#2.5">Italian (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#2.6">Italian (Content Language) - Danish (Reference Voice Language) </a></li>
+        </ul>
+
+        <li><a href="#ttsmore">Audio Samples (More languages, compared with IMS-Toucan)</a></li>
+        <ul>
+          <li><a href="#3.1">Zulu (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#3.2">Uzbek (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#3.3">Māori (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#3.4">Xhosa (Content Language) - English (Reference Voice Language) </a></li>
+          <li><a href="#3.5">Estonian (Content Language) - English (Reference Voice Language) </a></li>
+        </ul>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+      <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+      <p>Cross-language speaker-adaptive text-to-speech (TTS) has advanced rapidly, enabling more controllable speech generation across different languages. However, existing approaches suffer from limited language coverage, with state-of-the-art systems supporting only 0.5\% of the world’s 7,000+ languages. One common method to expand language coverage is to pre-train the model on a large number of languages upfront. However, this requires collecting extensive multilingual data all at once, which is particularly challenging for many low-resource languages. An alternative approach is to pre-train a model on several languages and then fine-tune it for a new language, a process that may lead to catastrophic forgetting, thereby degrading performance on previously learned languages. To address these challenges, we explore a third approach and propose Language Expert Speech (LESpeech), a cross-language speaker-adaptive TTS framework that seamlessly integrates unseen low-resource languages without fine-tuning the pre-trained modules. By disentangling speech generation into two phases, LESpeech enables efficient language expansion post-training by training a new language expert for the target language using just one hour of parallel audio-text data. Our experiments demonstrate that LESpeech achieves competitive speech quality compared to models fully pre-trained in the target language.</p>
+      <center><img src='figs/ov.png' width="700"></center>
+      <br><br>
+      
+      <h2>2. Audio Samples (Compared with XTTS v2)<a name="tts"></a></h2>
+      <a name="2.1">
+        <h3>2.1 English (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  Immediately Beyond The Lip Of The Ledge The Hawk Lifted His Wings High Over His Back And Struck Downward, So That His Talons Went Deep Into The Water.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  Any One Thereabouts Would Have Told You That This Was One Of The Richest Farms On The Divide, And That The Farmer Was A Woman, Alexandra Bergson.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134493_000021_000006.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134493_000021_000006.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134493_000021_000006.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  As It Chanced, However, The Victim Came Down With A Thud Almost Beneath The Whiskered Nose Of The Wildcat.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000012_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000012_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000012_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  Frank Was Always Reading About The Doings Of Rich People And Feeling Outraged. He Had An Inexhaustible Stock Of Stories About Their Crimes And Follies, How They Bribed The Courts And Shot Down Their Butlers With Impunity Whenever They Chose.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000003_000003.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000003_000003.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000003_000003.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  "'This Is My Vow: I Will Sail To Norway And I Will Harry The Coast And Fill My Boat With Riches.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/5142_33396_000008_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/5142_33396_000008_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/5142_33396_000008_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  "I Can'T Pray To Have The Things I Want," He Said Slowly, "And I Won'T Pray Not To Have Them, Not If I'M Damned For It."</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000038_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000038_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/237_134500_000038_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  Julius Smith, Wife Mary, And Boy James, Henry And Edward Smith, And Jack Christy.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/8463_287645_000001_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/8463_287645_000001_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/8463_287645_000001_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  These Few Remarks Are Called A Soliloquy, Being Addressed Rather To The World In General Than To Any Particular Person On The Stage.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_92135_000012_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_92135_000012_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_92135_000012_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  Many Mothers Manage Their Children By Means Of Tricks And Contrivances, More Or Less Adroit, Designed To Avoid Direct Issues With Them, And To Beguile Them, As It Were, Into Compliance With Their Wishes.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7021_79730_000051_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7021_79730_000051_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7021_79730_000051_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  But, As Before, The Leaping Waves Of The Rapids Were Too Much For His Pursuer, And He Was Able To Flap His Way Onward In A Cloud Of Foam, While Doom Hung Low Above His Head, Yet Hesitated To Strike.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000007.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000007.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_eng/7176_88083_000018_000007.our.flac"></audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+
+      <a name="2.2">
+        <h3>2.2 English (Content Language) - Italian (Reference Voice Language) </h3>
+      </a>
+
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  Frank Read English Slowly, And The More He Read About This Divorce Case, The Angrier He Grew.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000001_000004.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000001_000004.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000001_000004.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  As Wealth Accumulates On His Hands, His Own Unaided Effort Will Not Avail To Sufficiently Put His Opulence In Evidence By This Method.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5694_000011_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5694_000011_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5694_000011_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  "Weren'T You Awfully Surprised?" Cried Percy; "Say, Polly, Awfully?"</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_126133_000027_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_126133_000027_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_126133_000027_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  You Will Have A Very Pleasant Time, I Am Sure; Because You Never Quarrel.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/7021_79740_000010_000005.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/7021_79740_000010_000005.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/7021_79740_000010_000005.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  It Will Go Away, And Things Will Be Just As They Used To. I Wish You Were A Catholic.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000036_000005.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000036_000005.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134500_000036_000005.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  Oh, There'S A Good Boy!" She Turned Her Head To Him With A Quick, Bright Smile.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134493_000017_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134493_000017_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/237_134493_000017_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  The Question Is, Which Of The Two Methods Will Most Effectively Reach The Persons Whose Convictions It Is Desired To Affect.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5695_000005_000004.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5695_000005_000004.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/3570_5695_000005_000004.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  Not That I Could Make A Better One!</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000008_000002.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000008_000002.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000008_000002.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  "Doctor Of What?" Asked Mrs Carey.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000009_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000009_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/4992_41797_000009_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  I Always Had It In My Mind To Leave, But I Was 'Jubus', Dubious? Of Starting.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/8463_287645_000024_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/8463_287645_000024_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_ita/8463_287645_000024_000001.our.flac"></audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+      <a name="2.3">
+        <h3>2.3 English (Content Language) - Danish (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  "Oh, It'S Nothing Really!</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000040_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000040_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000040_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  He Dived And Caught It, Came To The Surface And Swallowed It. Much Refreshed, He Looked About Him.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000024_000003.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000024_000003.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000024_000003.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  I Asked For Commander Farragut.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000049_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000049_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/8463_294828_000049_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  The Rich Soil Yields Heavy Harvests; The Dry, Bracing Climate And The Smoothness Of The Land Make Labor Easy For Men And Beasts.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000003_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000003_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000003_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  "'This Is My Vow: I Will Sail To Norway And I Will Harry The Coast And Fill My Boat With Riches.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/5142_33396_000008_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/5142_33396_000008_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/5142_33396_000008_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  "I Shall Have To Give Up!" She Moaned.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000015_000003.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000015_000003.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000015_000003.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  And To Be Sure, Our Polly'S Face Was A Study To Behold.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000030_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000030_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_126133_000030_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  I Get Wet To My Knees When I Go Down To Pick Cherries."</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000015_000004.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000015_000004.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/237_134493_000015_000004.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  The Stove In The Cellar, Always Alluded To By Gilbert As The "Young Furnace," Had Not Yet Been Used, Save By Way Of Experiment, But It Was Believed To Be A Perfect Success.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/4992_41806_000003_000002.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/4992_41806_000003_000002.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/4992_41806_000003_000002.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  At The Same Moment He Felt The Light Restraint Of The Almost Invisible Leader Upon His Wings, Where The Other Two Flies Had Affixed Themselves.</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000023_000002.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000023_000002.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/eng_dan/7176_88083_000023_000002.our.flac"></audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+      <a name="2.4">
+        <h3>2.4 Italian (Content Language) - Italian (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  Ma Bensì Si Sforzeremo In Quanto Per Noi Si Potrà Di Farvi Quelle Provisioni Che Possibili Saranno A Riaver La Sanità E Riavuta Conservarla</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/13211_11418_000002.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/13211_11418_000002.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/13211_11418_000002.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  Voleva Vederli In Faccia Questi Signori Spiriti E Sghignazzava Capitolo Sei La Casa Sorgeva Nel Quartiere Più Alto Della Città In Cima Al Colle</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000152.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000152.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000152.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  Comperava Libri E Libri E Libri Strumenti Per Il Suo Gabinetto E Poi Non Sapeva Spiegarsi Come Mai Il Suo Stipendio Non Bastasse A Sopperire Ai Bisogni D'Una Famiglia Ormai Così Ristretta</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_5281_000000.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_5281_000000.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_5281_000000.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  Poteva L'Anima Di Un Trapassato Tornare Per Un Istante A Materializzarsi E Venire A Stringergli La Mano Sì A Stringere La Mano A Lui Zummo Incredulo Cieco Fino A Ieri Per Dirgli Zummo Sta' Tranquillo</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000121.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000121.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000121.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  Tre Balie In Pochi Giorni Se Vedessi Uno Scheletrino Non So Più Che Fare Mi Sono Dimostrati Tutti D'Un Cuor Duro D'Un Cuor Nero I Parenti Di Lei</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000105.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000105.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000105.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  La Vista Dello Sterrato Deserto Dopo Il Quale L'Alto Colle Su Cui Sorge La Città Strapiomba In Ripidissimo Pendio Su Un'Ampia Vallata Con Quell'Unico Lampioncino La Cui Fiammella Vacillava Come Impaurita Dalla Tenebra Densa Che Saliva Dalla Valle</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000128.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000128.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000128.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  Sentì Per Un Momento Il Bisogno D'Astrarsi Da Quell'Oppressione E Anche Dal Fastidio Che Nell'Intontimento In Cui Era Caduto Gli Dava Il Merlettino Bianco Che Orlava Il Collo Della Casacca Nera Della Vecchia Signora</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7458_6589_000081.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7458_6589_000081.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7458_6589_000081.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  Se Non Che Nel Voltarsi Così Sorridente A Guardar Dentro La Camera Vide Non Comprese Bene Che Fosse In Prima Balzò In Piedi Esterrefatto S'Afferrò Rinculando Alla Ringhiera Del Balcone</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000148.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000148.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/6698_5281_000148.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  Rispose Prontamente Il Gallo E Se More Il Padrone Che Ne Ho A Far Io Sono Io Forse Causa Della Morte Di Quello Egli Vuole Spontaneamente Morire</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_11418_000011.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_11418_000011.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/4009_11418_000011.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  Una Strana Ansia Lo Prese Di Veder La Creaturina Che In Quel Momento Entrava Nella Vita Per Lui Ma Due Due In Quella Stessa Notte Signore Iddio Forse In Quel Punto Stesso Nel Suo Palazzo Nasceva Un'Altra Creaturina Pur Sua</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000076.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000076.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_ita/7372_6589_000076.our.flac"></audio>
+            </td>
+          </tr>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+      <a name="2.5">
+        <h3>2.5 Italian (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  Questa Gente Che Preme A Noi È Molta E Vegnonti A Pregar Disse Il Poeta Però Pur Va E In Andando Ascolta Oh Anima Che Vai Per Esser Lieta Con Quelle Membra Con Le Quai Nascesti Venian Gridando Un Poco Il Passo Queta</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/428_529_000068.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/428_529_000068.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/428_529_000068.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  E Forse Non Aveva Neanche Ascoltato Nulla Di Quanto Egli Con Tanta Trepidazione Gli Aveva Detto Vengo Signor Marchese Vengo Ai Fatti Balbettò Tutto Smorto E Smarrito</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000038.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000038.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000038.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  A Proposito Di Piedi Continuò La Falsa Testuggine Come Poteva Egli Rivoltarli E Col Naso Per Giunta È La Prima Posizione Nel Ballo Disse Alice Ma Era Talmente Imbarazzata Con Quell'Argomento Che Non Vedeva Il Momento Di Mutar Soggetto</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/13211_8906_000024.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/13211_8906_000024.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/13211_8906_000024.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  E Perché No S'Era Interposto Felicissimo Il Professor Gori E La Reis Aveva Accettato E Ora Il Matrimonio Si Celebrava A Dispetto Dei Parenti Del Signor</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000011.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000011.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000011.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  Che Fare Andar Su Parato A Quel Modo Tornare Indietro Raccattò Il Mazzo Poi Imbalordito Lo Porse Al Portinaio Mi Facci Piacere Me Lo Tenga Lei Ed Entrò</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000024.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000024.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7458_6589_000024.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  Ora Egli Vi Fece Trasportare Un Letto Un Cassettone Un Lavamano E Alcune Seggiole Che Allogò In Una Delle Tante Camere Vuote E Venuta La Sera Dopo Aver Fatto Il Giro Del Quartiere Per Far Vedere A Tutti Che Manteneva La Parola Andò A Dormire Solo In Quella Sua Povera Casa Infamata</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/6698_5281_000129.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/6698_5281_000129.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/6698_5281_000129.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  Ebbene Signori Michelangelo Castiglione È D'Una Onestà D'Una Illibatezza Da Fare Spavento Si Vendica Stando Ai Patti Scrupolosissimamente</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/8582_7877_000017.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/8582_7877_000017.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/8582_7877_000017.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  Era Sicura Che Il Verona Conoscendo Bene I Motivi Per Cui Ella Voleva Andar Via Dalla Città Natale Avrebbe Fatto Valere In Suo Favore La Grande Autorità Che In Poco Tempo Era Riuscito Ad Acquistarsi In Parlamento</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/4009_5281_000031.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/4009_5281_000031.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/4009_5281_000031.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  Per Chi Avesse Fretta E Non Potesse Aspettare Quei Giorni Fissati C'Era L'Ufficio Delle Comunicazioni Urgenti Nello Stesso Piano Nella Stessa Sezione Primo Corridoio A Sinistra Uscio Terzo</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000052.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000052.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000052.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  Doglie Stanche Mormorò Il Medico S'Andrà Per Le Lunghe Ma Stia Tranquillo Marchese Nessun Pericolo Don Camillo Tornava A Rinchiudersi Nello Stanzino Quando Un Servitore Gli S'Appressò Per Annunziargli Piano Che Qualcuno Chiedeva Di Lui</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000097.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000097.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_eng/7372_6589_000097.our.flac"></audio>
+            </td>
+          </tr>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+      <a name="2.6">
+        <h3>2.6 Italian (Content Language) - Danish (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">XTTS V2</td>
+            <td style="text-align: center">LESpeech</td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  Ora Se Innanzi A Me Nulla S'Aombra Non Ti Maravigliar Più Che D'I Cieli Che L'Uno All'Altro Raggio Non Ingombra A Sofferir Tormenti Caldi E Geli Simili Corpi La Virtù Dispone Che Come Fa Non Vuol Ch'A Noi Si Sveli</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000076.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000076.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000076.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  Che Se Potuto Aveste Veder Tutto Mestier Non Era Parturir Maria E Disiar Vedeste Sanza Frutto Tai Che Sarebbe Lor Disio Quetato Ch'Etternalmente È Dato Lor Per Lutto</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000116.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000116.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000116.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  Toglierti Prima Di Tutto Codesti Pezzetti Di Carta Dai Capelli Oh Dio Gemette La Fanciulla Sovvenendosene E Portandosi Subito Le Mani Tremanti Ai Capelli</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000012.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000012.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000012.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  Diventò Furibondo Scucita Scucita Soltanto Lo Rassicurò Subito Accorrendo La Vecchia Serva Se La Cavi Gliela Ricucio</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000042.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000042.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000042.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  Tu Come Ti Chiami Vincenzo Oh Che Brutto Nome E Questo Ciondolo È D'Oro Si Apre Come Si Apre E Che C'È Dentro Oh Guarda Capelli E Di Chi Sono E Perché Ce Li Tieni</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/6698_5281_000032.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/6698_5281_000032.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/6698_5281_000032.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  Perché Ad Alcune Di Queste Visite Se Non S'Ingannava Ella Era Stata Presente Giovinetta Allora Ma Non Tanto Piccolina Se Già Ma Sicuro Se Già Faceva Da Segretaria Al Babbo</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/4009_5281_000071.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/4009_5281_000071.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/4009_5281_000071.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  Bisogna Esser Più Forti Della Sciagura Che Colpisce Quella Povera Figliuola E Salvarla Può Restar Sola Così Senza Aiuto E Senz'Alcuna Posizione Ormai Lo Dica Lei No Questo Matrimonio Si Farà Nonostante La Sciagura E Nonostante Abbiano Pazienza</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000134.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000134.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000134.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  Matto È Chi Spera Che Nostra Ragione Possa Trascorrer La Infinita Via Che Tiene Una Sustanza In Tre Persone State Contenti Umana Gente Al Quia</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000024.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000024.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/428_529_000024.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  Fu Una Subitanea Conversione Della Festa Più D'Uno Accorse Alla Saletta A Prendere Altre Ceste E A Recarle In Processione</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000001.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000001.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000001.our.flac"></audio>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  Del Suo Stato Della Vecchia Mamma Che Non Poteva Lasciar Sola E Sopra Tutto Del Facile Malignare Della Gente</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000008.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000008.xtts.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/ita_dan/7458_6589_000008.our.flac"></audio>
+            </td>
+          </tr>
+          </tr>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+
+
+      <h2>3. Audio Samples (More language coverage, compared with Ground-Truth)<a name="ttsmore"></a></h2>
+      <a name="3.1">
+        <h3>3.1 Zulu (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Ground-Truth</td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">IMS-Toucan</td>
+            <td style="text-align: center">LESpeech</td>
+
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  usesho kuyi-inthanethi lokudla kwendawo embi cishe luzonikeza ikheli lenkampani yasendaweni</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/3277308731836614874.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/3277308731836614874.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/3277308731836614874.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/3277308731836614874.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  lulula ngaphansi kolwandle futhi lungugqinsi ngaphansi kwezinkangala</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/15926222765712628902.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/15926222765712628902.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/15926222765712628902.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/15926222765712628902.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  ubhekisele emahlebezini ngokuthi ingevu yepolotiki kanye nobuthutha</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/10643908877263433702.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/10643908877263433702.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/10643908877263433702.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/10643908877263433702.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  icasablanca enye yezindawo ezingathakazelisi kakhulu yokuthenga kuyo emorocco yonke</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12785699444233336839.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12785699444233336839.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12785699444233336839.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12785699444233336839.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  indawo yaseschengen nokho isebenza ngandlelathile njengezwe elilodwa kulokhu</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6208297528608074259.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6208297528608074259.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6208297528608074259.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6208297528608074259.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  lokhu kubonakala kunengqondo ngenxa yokuthi umhlaba awuzwakali sengathi uyanyakaza akunjalo</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/785822603355860172.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/785822603355860172.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/785822603355860172.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/785822603355860172.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  abantu basepherisi banedumela lokuqhosha ukuba luhlaza kanye nokuzidla</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12846313738126604397.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12846313738126604397.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12846313738126604397.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/12846313738126604397.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  lesi sifo sitholakala ezingulubeni esidlulela ebantwini ngominyane</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/2464376314057992916.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/2464376314057992916.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/2464376314057992916.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/2464376314057992916.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  idolobha lihlukile ngokuphelele kwamanye amadolobha ezwe ngoba linomoya wase-arabhiya kakhulu ukudlula owaseafrika</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6066399405890294607.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6066399405890294607.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6066399405890294607.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/6066399405890294607.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  abantu manje babhala imilayezo ezikrinini zamakhompyutha bangasadingi ukusondela emshinini wokucija amapensela</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/11760793485142495197.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/11760793485142495197.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/11760793485142495197.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Zulu/11760793485142495197.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+        </tbody>
+       </table>
+
+       <p></p>
+
+      <a name="3.2">
+        <h3>3.2 Uzbek (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Ground-Truth</td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">IMS-Toucan</td>
+            <td style="text-align: center">LESpeech</td>
+
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  odamlarga marosimni koʻrishlariga imkon berish uchun rimning turli joylarida bir nechta katta ekranli televizorlar oʻrnatilgan edi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13433657287102975774.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13433657287102975774.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13433657287102975774.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13433657287102975774.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  sahnalar piramidalar ustida namoyish etildi va turli xil piramidalar yoritildi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/16348037636366957488.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/16348037636366957488.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/16348037636366957488.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/16348037636366957488.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  harbiy harakatlar xurujidan koʻp oʻtmay britaniya germaniyani dengizda blokada qilishni boshladi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/6452557403415330310.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/6452557403415330310.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/6452557403415330310.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/6452557403415330310.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  shu tarzda qalam paydo boʻlganida koʻpchilik uchun yaxshi doʻst edi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13257358657326732321.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13257358657326732321.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13257358657326732321.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13257358657326732321.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  shu tarzda qalam paydo boʻlganida koʻpchilik uchun yaxshi doʻst edi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/2490531321409012302.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/2490531321409012302.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/2490531321409012302.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/2490531321409012302.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  kalsiy hamda kaliy singari elementlar metall sanaladi albatta kumush hamda oltin singari metallar ham mavjud</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13313597062404594815.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13313597062404594815.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13313597062404594815.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/13313597062404594815.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  bir bomba general-gubernatorning idorasi tashqarisida portladi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/14886640553411870235.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/14886640553411870235.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/14886640553411870235.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/14886640553411870235.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  romantizmda gyote fixte hamda shlegel singari yozuvchilardan qolgan madaniy determinizmning yirik elementi bor edi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/15670740912867803479.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/15670740912867803479.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/15670740912867803479.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/15670740912867803479.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  koʻpchilik ularni dinozavrlar deb oʻylamaydi chunki ularning patlari bor va ucha oladi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/749701031298568934.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/749701031298568934.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/749701031298568934.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/749701031298568934.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  gubernator idorasi jarohatlanganlarning oʻn toʻqqiz nafari politsiya xodimlari boʻlganini maʼlum qildi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/17008478784767889300.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/17008478784767889300.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/17008478784767889300.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Uzbek/17008478784767889300.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+        </tbody>
+       </table>
+
+       <p></p>
+
+
+      <a name="3.3">
+        <h3>3.2 Maori (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Ground-Truth</td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">IMS-Toucan</td>
+            <td style="text-align: center">LESpeech</td>
+
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  mā tēnei kitenga e kite ai te māramatanga ki te kukuwhatanga o ngā raukura manu</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/7591499671741760600.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/7591499671741760600.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/7591499671741760600.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/7591499671741760600.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  mō ngā springboks i whakaoti i tētahi hinganga auau e rima</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18159881849348534957.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18159881849348534957.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18159881849348534957.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18159881849348534957.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  ka huri te tae o te wai kāpeti i runga i tōna waikawa i runga rānei i te kawakore o te matū</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/14916267542609585589.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/14916267542609585589.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/14916267542609585589.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/14916267542609585589.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  whakaarohia te ara retireti hei ara hīkoi ōrite</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/6623924998273480365.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/6623924998273480365.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/6623924998273480365.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/6623924998273480365.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  kei te kawea te tahumaero e te poaka kātahi ka neke ki te tangata ki te naenae</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/17056791141296082692.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/17056791141296082692.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/17056791141296082692.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/17056791141296082692.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  ko ngā raiona ngā ngeru tīno whakahoahoa e noho ana ki ngā rōpū e kīia ana ko te pride</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/4103013595543670518.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/4103013595543670518.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/4103013595543670518.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/4103013595543670518.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  i roto i te āhuarangi mahana o te waenga rāwhiti kāore i tino hirahira te whare</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2691536023853627044.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2691536023853627044.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2691536023853627044.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2691536023853627044.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  i kōrero ia mō ngā tūtara hei tarawhetewhete tōrangapū me te heahea</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/15360298498042810194.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/15360298498042810194.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/15360298498042810194.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/15360298498042810194.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  i kōrero ia mō ngā tūtara hei tarawhetewhete tōrangapū me te heahea</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18037754612513018357.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18037754612513018357.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18037754612513018357.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/18037754612513018357.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  ko casablanca tētahi o ngā wāhi iti rawa te ngahau hei hokohoko ki te katoa o marako</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2579594727888915667.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2579594727888915667.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2579594727888915667.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Maori/2579594727888915667.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+        </tbody>
+       </table>
+
+       <p></p>
+
+
+      <a name="3.4">
+        <h3>3.2 Xhosa (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Ground-Truth</td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">IMS-Toucan</td>
+            <td style="text-align: center">LESpeech</td>
+
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  ngaphandle kwe-iventi yangolwesithathu ucarpanedo wakhuphisana kwimidyarho yeentshatsheli</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2214317759637505025.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2214317759637505025.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2214317759637505025.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2214317759637505025.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  ubhekise kwintlebendwane njenge zathuzo lwepolitiki nokugeza</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/18257475176163698972.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/18257475176163698972.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/18257475176163698972.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/18257475176163698972.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  iingonyama zezona kati zihlala kunye kumaqela amakhulu abizwa ngokuba libubu</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/12898154331738346983.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/12898154331738346983.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/12898154331738346983.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/12898154331738346983.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  ibhityile ngaphantsi kwezibuko ize ityebe ngaphantsi kwiindawo eziphakamileyo</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/13910326796820283949.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/13910326796820283949.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/13910326796820283949.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/13910326796820283949.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  ngoko ipensile yaba ngoyena mhlobo kubantu abaninzi mhlana yabakho</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8933757224357368844.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8933757224357368844.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8933757224357368844.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8933757224357368844.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  umabonakude ubonisa umsi onhlophe ophuma kubuxhakaxhaka</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/14947284903853378228.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/14947284903853378228.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/14947284903853378228.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/14947284903853378228.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  umabonakude ubonisa umsi onhlophe ophuma kubuxhakaxhaka</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/3139861491994909074.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/3139861491994909074.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/3139861491994909074.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/3139861491994909074.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  isizisele uloliwe imoto kunye nezinye izixhobo zothutho</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2936967458987548422.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2936967458987548422.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2936967458987548422.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/2936967458987548422.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  icasablanca yenye yezona ndawo zinomdla wokuthenga emorocco</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/36214122999397781.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/36214122999397781.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/36214122999397781.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/36214122999397781.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  ezinye i-wrestlers zanikezela imbeko kuluna</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8761991098532698268.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8761991098532698268.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8761991098532698268.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Xhosa/8761991098532698268.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+        </tbody>
+       </table>
+
+       <p></p>
+
+
+      <a name="3.5">
+        <h3>3.2 Estonian (Content Language) - English (Reference Voice Language) </h3>
+      </a>
+      <table>
+        <tbody>
+          <tr>
+            <td style="text-align: center"><strong>Text</strong></td>
+            <td style="text-align: center">Ground-Truth</td>
+            <td style="text-align: center">Voice Reference</td>
+            <td style="text-align: center">IMS-Toucan</td>
+            <td style="text-align: center">LESpeech</td>
+
+          <tr>
+            <td style="text-align: left"><strong>1</strong>.  ta ei määranud kärbetele rahalist väärtust öeldes et need sõltuvad hiina majandustulemustest</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/243902861176404741.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/243902861176404741.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/243902861176404741.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/243902861176404741.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>2</strong>.  tänu sellele on meil olemas rong auto ja palju muid transpordiseadmeid</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/6246236258635253676.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/6246236258635253676.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/6246236258635253676.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/6246236258635253676.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>3</strong>.  paljud inimesed ei pea neid dinosaurusteks sest neil on suled ja nad suudavad lennata</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/3207372263128894074.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/3207372263128894074.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/3207372263128894074.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/3207372263128894074.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>4</strong>.  casablanca on üks kõige ebahuvitavamaid kohti ostlemiseks kogu marokos</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/8849139091735294335.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/8849139091735294335.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/8849139091735294335.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/8849139091735294335.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>5</strong>.  aju patoloogia ja käitumise vaheline seos toetab teadlaste uuringuid</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5944720688805085220.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5944720688805085220.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5944720688805085220.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5944720688805085220.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>6</strong>.  nii on tõenäoline et märge lisati lihtsalt sildina</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5920172571125879526.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5920172571125879526.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5920172571125879526.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/5920172571125879526.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>7</strong>.  need paarid võivad teha valiku oma laps adopteerimisele anda</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7386594970228023469.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7386594970228023469.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7386594970228023469.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7386594970228023469.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>8</strong>.  samamoodi peavad mehed kandma pükse mis katavad põlvi</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/385085440266955725.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/385085440266955725.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/385085440266955725.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/385085440266955725.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>9</strong>.  telereportaažid näitavad et tehasest tuleb valget suitsu</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/14102303097153265124.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/14102303097153265124.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/14102303097153265124.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/14102303097153265124.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+          <tr>
+            <td style="text-align: left"><strong>10</strong>.  võib ainult spekuleerida mis saab klaviatuurist siis kui tekib midagi uut</td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7100689549145611600.gt.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7100689549145611600.ref.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7100689549145611600.ims.flac"></audio>
+            </td>
+            <td style="text-align: center">
+              <audio style="width: 100px;" controls="" preload="none" src="./audios/Estonian/7100689549145611600.lespeech.flac"></audio>
+            </td>
+          <tr>
+
+        </tbody>
+       </table>
+       <p></p>
+
+      <h2 id="conclusion">4. Conclusion<a name="conclusion"></a></h2>
+      <p>LESpeech is the first cross-language speaker-adaptive TTS which provides a unrestricted language scalable solution. By fully disentangling the language generation process into two phases, LESpeech eliminates the need for fine-tuning pre-trained modules when extending to new languages, combining the flexibility of zero-shot speaker adaptation with an efficient mechanism for language expansion. Thus, LESpeech can continuously extend its language coverage without compromising synthesis quality. This approach improves access to controllable, high-quality TTS for low-resource languages and fosters further research and development in the speech research community.</p>
+      <footer class="site-footer">
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+  </body>
+</html>
